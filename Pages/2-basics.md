@@ -11,7 +11,7 @@ user=> (class "hello")
 java.lang.String
 ```
 
-Characters are like special types of strings which contain s single character, they are prefixed with a \.
+Characters are like special types of strings which contain a single character, they are prefixed with a \.
 
 ```
 user=> (class \a)
