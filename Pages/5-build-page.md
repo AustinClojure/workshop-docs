@@ -1,4 +1,4 @@
-# Chapter 5: More Code Changes
+# Chapter 5: Building the Index Page
 
 Now let's change the app's main page from "Hello, World" to something a little more chatty.
 
@@ -6,25 +6,19 @@ Now let's change the app's main page from "Hello, World" to something a little m
 
 We need to write code that will generate HTML. To do this, we will use a library called `hiccup`. We don't have this library yet, so we're going to add it. Adding a new library requires two steps:
 
-1) Add the library to the dependency section of the `project.clj` file. This tells lein your program needs another program.
+1) Add the library to the dependency section of the `project.clj` file. This tells lein to install another library.
 
-Add hiccup by updating the `project.clj` file to look like this:
+Add hiccup by updating the `project.clj` dependancies vector to include this:
 
 ```clojure
-  :dependencies [[org.clojure/clojure "1.8.0"]
-                 [compojure "1.4.0"]
-                 [ring/ring-defaults "0.1.5"]
-                 [hiccup "1.0.5"]]
+[hiccup "1.0.5"]
 ```
 
-2) Import the library into the namespace you will use it in by adding the import to the `ns` declaration. Our ns declaration will be part of the `handler.clj` file:
+2) Import the hiccup libraries into the handler namespace by adding to the `ns :require` declaration. Include these in `(:require )`
 
 ```clojure
-(ns chatter.handler
-  (:require [compojure.core :refer :all]
-            [compojure.route :as route]
-            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
-            [hiccup.page :as page]))
+[hiccup.core :as hiccup]
+[hiccup.page :as page]
 ```
 
 Let's use hiccup to generate the html by changing `app-routes`:
