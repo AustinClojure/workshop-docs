@@ -1,4 +1,4 @@
-# Chapter 3: Starting The Project
+.# Chapter 3: Starting The Project
 
 ### Creating a Clojure project
 
@@ -126,5 +126,5 @@ The _name_ of the variable is `app` and it's being assigned the result of ```(wr
 Stop the server by going back to the terminal and holding the "Ctrl+C".
 
 
-Next [Chapter 5: Build Page](/Pages/5-build-page.md)
+Next [Chapter 5: Reorganize some things](/Pages/5-reorg.md)
 

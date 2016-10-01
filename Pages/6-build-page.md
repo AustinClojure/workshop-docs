@@ -199,4 +199,4 @@ Now our `index-view` looks like:
 
 Save `handler.clj`, then refresh the browser.  Our hard-coded messages should now display in the page
 
-Next [Chapter 6: Add Form](/Pages/6-add-form.md)
+Next [Chapter 7: Add Form](/Pages/7-add-form.md)
