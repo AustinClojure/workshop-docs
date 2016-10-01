@@ -32,7 +32,7 @@ Change the `project.clj` to be like this:
 
 
 
-Add a file in the src directory, this moves the server stuff out of the `handler.clj` file:
+Add a new file in the src directory, this moves the server stuff out of the `handler.clj` file:
 
 ```clojure
 (ns chatter.main  
@@ -41,9 +41,11 @@ Add a file in the src directory, this moves the server stuff out of the `handler
            [ring.adapter.jetty :as jetty]))
 
 (defn -main [& [port]]  
-  (let [port (Integer. (or port (env/env :port) 5000))]    
+  (let [port (Integer. (or port (env/env :port) 3000))]    
     (jetty/run-jetty #'chatter/app {:port port :join? false})))
 ```
+
+The things in the `[]` for this function indicates to match all args to the function and give the name of `port` to the first arg. If that turns out empty, it looks to see if there is an environment variable of `port`.
 
 Then change your Handler file to be like this: 
 
@@ -55,12 +57,12 @@ Then change your Handler file to be like this:
             [ring.util.response :as response]))
 ```
 
-remove the bottom (below `defroutes`) and replace it with this:
+remove the bottom (below `defroutes`) and replace with this:
 
 ```clojure
 (def app (params/wrap-params app-routes))
 ```
 
-We basically added all the libraries we will need and moved the server stuff to a new file.
+We have now basically added all the libraries we will need and moved the server stuff to a new file.
 
 

@@ -88,8 +88,8 @@ The first is:
 
 There are four parts to this expression:
 
-1. `GET`: this is the type of HTTP request we want to handle. GETs are requests for information or data.
-2. `"/"`: this is the name of the web page.  `/` means the top level.
+1. `GET`: Name of function, GET. GETs are requests for information or data.
+2. `"/"`: this is the url of the page.  
 3. `[]`: this is an empty parameter vector.  When you do a search or fill out a form, the parameters narrow the result.
 4. `"Hello World"`: the result that gets sent back to the requesting browser.
 
@@ -99,32 +99,9 @@ After the GET request is the second route definition `app-route`, which is:
 (route/not-found "Not Found")
 ```
 
-This means when the server gets any kind of request other than GET, it should return "Not Found."
+This means when the server gets any kind of request other than `GET /`, it should return "Not Found."
 
-
-In the editor, the third and final expression of the `handler.clj` file says,
-
-```clojure
-(def app ...
-```
-
-`def` is how you declare a variable in Clojure.
-The format is: `(def name doc-string? init?)`
-
-1. `def`: introduces the def expression.
-2. `name`: the name you want to give the variable.
-3. `doc-string?`: an optional description on what the variable is and how it is meant to be used.
-4. `init?`: an optional value the variable will be set to. If unset, the variable is unbound.
-
-The _name_ of the variable is `app` and it's being assigned the result of ```(wrap-defaults app-routes site-defaults)```
-
-* `wrap-defaults` is imported from the ring library, and it combines our routes and the defaults. When we start the server, it's going to look for the routes associated with the `app` variable and use those to decide how to handle HTTP requests.
-* `app-routes` is what we're calling our set of routes
-* `site-defaults`are default request/response handling details imported into the namespace from ring library.
-
-
-Stop the server by going back to the terminal and holding the "Ctrl+C".
-
+Stop the server by going back to the terminal and doing "Ctrl+C".
 
 Next [Chapter 5: Reorganize some things](/Pages/5-reorg.md)
 
