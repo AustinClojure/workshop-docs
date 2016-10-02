@@ -68,5 +68,5 @@ Remove the var and replace with this:
 
 We have now basically added all the libraries we will need and moved the server code to a new file.
 
-Next lets start [Chapter 6: Building our Index Page](/Pages/6-build-page.md")
+Next lets start [Chapter 6: Building our Index Page](/Pages/6-build-page.md)
 
