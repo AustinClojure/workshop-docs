@@ -29,16 +29,16 @@ We'll use:
 
 Now `chat-messages` is pointing to the `atom` protecting our vector of hashes.
 
-Because `chat-messages` is pointing to the `atom`, we can't simply `map` over it in `index-page`.  Now, we have to tell Clojure that we want to generate HTML for the contents of the atom. This allows Clojure to ensure the messages are always read in a consistent state, even though something could be modifying them.
+Because `chat-messages` is pointing to the `atom`, we can't simply `map` over it in `index-view`.  Now, we have to tell Clojure that we want to generate HTML for the contents of the atom. This allows Clojure to ensure the messages are always read in a consistent state, even though something could be modifying them.
 
 > Reading what's stored in an `atom` is called "dereferencing" and is represented by the `@` character.
 
-We will dereference the `chat-messages` atom just before it is passed to the `index-page` function. We can do this by changing our routes from:
+We will dereference the `chat-messages` atom just before it is passed to the `index-view` function. We can do this by changing our routes from:
 
 ```clojure
 (defroutes app-routes
-  (GET "/" [] (index-page chat-messages))
-  (POST "/" [] (index-page chat-messages))
+  (GET "/" [] (index-view chat-messages))
+  (POST "/" [] (index-view chat-messages))
   (route/not-found "Not Found"))
 ```
 
@@ -46,8 +46,8 @@ to:
 
 ```clojure
 (defroutes app-routes
-  (GET "/" [] (index-page @chat-messages))
-  (POST "/" [] (index-page @chat-messages))
+  (GET "/" [] (index-view @chat-messages))
+  (POST "/" [] (index-view @chat-messages))
   (route/not-found "Not Found"))
 ```
 
