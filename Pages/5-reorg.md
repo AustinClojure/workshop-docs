@@ -32,7 +32,7 @@ Change the `project.clj` to be like this:
 
 
 
-Add a new file in the src directory, this moves the server stuff out of the `handler.clj` file:
+Add a new file called `main.clj` in the `src/chatter` directory. Add this following: 
 
 ```clojure
 (ns chatter.main  
@@ -60,12 +60,13 @@ Then change your Handler file to be like this:
             [ring.util.response :as response]))
 ```
 
-remove the bottom (below `defroutes`) and replace with this:
+Remove the var and replace with this:
 
 ```clojure
 (def app (params/wrap-params app-routes))
 ```
 
-We have now basically added all the libraries we will need and moved the server stuff to a new file.
+We have now basically added all the libraries we will need and moved the server code to a new file.
 
+Next lets start [Chapter 6: Building our Index Page](/Pages/6-build-page.md")
 
