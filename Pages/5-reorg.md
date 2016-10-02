@@ -40,12 +40,15 @@ Add a new file in the src directory, this moves the server stuff out of the `han
            [environ.core :as env]            
            [ring.adapter.jetty :as jetty]))
 
-(defn -main [& [port]]  
-  (let [port (Integer. (or port (env/env :port) 3000))]    
-    (jetty/run-jetty #'chatter/app {:port port :join? false})))
+(defn -main []
+ (let [jetty-opts {:port (or (Integer. (env/env :port))
+                             3000)
+                   :join? false}]
+   (jetty/run-jetty #'chatter/app jetty-opts)))
 ```
 
-The things in the `[]` for this function indicates to match all args to the function and give the name of `port` to the first arg. If that turns out empty, it looks to see if there is an environment variable of `port`.
+If there is an env variable with the `port` value it uses that, otherwise it uses 3000. 
+
 
 Then change your Handler file to be like this: 
 
