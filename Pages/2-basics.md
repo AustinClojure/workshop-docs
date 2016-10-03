@@ -25,7 +25,7 @@ There are three very important things to keep in mind when you are trying to get
 
 The stuff you build in your text editor is just that - **text**.  That text is then processed by an entity known as the **reader**, which (barring errors) will transform it into **data**.
 
-It does this be employing a certain lexicographical rules to the incoming text which turns interprets certain sequences of characters as **literals**.  
+It does this be employing a certain lexicographical rules to the incoming text which interprets certain sequences of characters as **literals**.  
 
 In Clojure, these are examples of things that are treated as **literals**:
 
@@ -65,7 +65,7 @@ But there are other sources of **values** too.  These are **containers** (collec
 | reader syntax | explaination
 | --------------    | -------------
 | ( v ... )  | a **list** (think singley-linked)
-| [ v ... ]  | **vector** (random accessable)
+| [ v ... ]  | a **vector** (random accessable)
 | #\{ v ... \} | a **set** (distinct values)
 | \{ k v ... \} | a **map** (associated key/value pairs)
 
@@ -115,13 +115,13 @@ If you understand how the internals of a typical compiler might work, you probab
 
 It's really that simple.  You start with a library of functions and special forms, use these to compose more functions and forms, which you eventually use and compose to implement whatever program you set out to build.
 
-You are in effect building upon and continuing a bootstrap process beginning from general tools (the built in primatives) to the specific ones (your libraries and programs).
+You are in effect building upon and continuing a bootstrap process beginning from general tools (the built in primitives) to the specific ones (your libraries and programs).
 
 Many Lisps have been implemented starting with only a very minimal kernel (maybe a dozen forms) and bootstrapping into full-blown implementation building upon that minimal kernel.
 
 Clojure itself does a considerable amount of this type of bootstrapping to implement its own core library, so a great deal of Clojure is implemented in Clojure itself.  There is a formidable Java kernel to be sure, but there is also a lot of Clojure involved in the implementation.
 
-So there is no division of "us .vs. them" when it comes to what you can build this way.  Are you extending the language, or writing your program  Is there really any difference?  Did you ever want/need there to be?
+So there is no division of "us .vs. them" when it comes to what you can build this way.  Are you extending the language, or writing your program?  Is there really any difference?  Did you ever want/need there to be?
 
 ### Namespaces
 
