@@ -33,4 +33,4 @@ Now Change the app var to include the `params/wrap-params` function to be able t
 Next we will wire it up and make it actually work.
 
 
-Next [Chapter 8: Add State](/Pages/8-add-atom.md)
+Next [Chapter 8: Add State](/Pages/8-add-state.md)
