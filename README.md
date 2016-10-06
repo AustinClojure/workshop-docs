@@ -9,4 +9,4 @@ Forked from [Minneapolis Clojurebridge Track 1](https://github.com/clojurebridge
 * [Chapter 6: Build Page](Pages/6-build-page.md)
 * [Chapter 7: Add Form](Pages/7-add-form.md)
 * [Chapter 8: Add State](Pages/8-add-state.md)
-* [Chapter 10: Push to Github](Pages/10-push-to-github.md)
+* [Chapter 10: Push to Github](Pages/10-publish-github.md)
