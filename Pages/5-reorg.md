@@ -60,13 +60,19 @@ Then change your Handler file to be like this:
             [ring.util.response :as response]))
 ```
 
-Remove the var and replace with this:
+Remove the app var and replace with this:
 
 ```clojure
 (def app (params/wrap-params app-routes))
 ```
 
 We have now basically added all the libraries we will need and moved the server code to a new file.
+
+Try it out with 
+
+```
+lein ring server
+```
 
 Next lets start [Chapter 6: Building our Index Page](/Pages/6-build-page.md)
 
