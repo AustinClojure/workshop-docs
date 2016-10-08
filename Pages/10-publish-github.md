@@ -11,9 +11,8 @@ brew install heroku
 
 Or other methods: 
 
-```
-https://devcenter.heroku.com/articles/heroku-command-line
-```
+[https://devcenter.heroku.com/articles/heroku-command-line](https://devcenter.heroku.com/articles/heroku-command-line)
+
 
 Now we'll deploy to heroku with the following commands:
 +   `heroku create`
