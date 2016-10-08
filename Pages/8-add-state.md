@@ -152,5 +152,30 @@ Now, the app is taking our new messages, but it's adding new messages to the end
 
 > Like vectors, lists are sequential collections.  Vectors are better for accessing random elements fast (which we aren't doing). Lists are better at adding an element to the front, which we want to do. Since they are both collections, `conj` works with either.
 
+##### Obligatory Tests (optional)
+
+So, now that we are finished and we can see it happening let's proceed to lock it down with a functional interactions test that validates many of the application assumptinos. Let's write a test that will submit a message and verify its presence on index afterwards:
+
+```clojure
+  (testing "main route"
+    (-> (session app)
+        (visit "/")
+		(has (status? 200) "page is found")
+		(has (some-text? "Our Chat App"))
+		(fill-in [:input.form-control] "Hooman")
+		(fill-in [:input.form-control] "Greetings")
+		(press [:input.btn.btn-primary])
+		(follow-redirect)
+		(has (status? 200) "message submitted successfully")
+		(has (some-text? "Greetings"))))
+```
+
+Run the tests,
+
+```
+  $: lein test
+```
+
+Can you write an assertion to verify the message is still present upon reload of index?
 
 Now, deploy your app to [heroku](/Pages/10-publish-github.md)
