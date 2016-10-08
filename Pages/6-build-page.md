@@ -59,7 +59,7 @@ The hiccup function `page/html5` generates an HTML page. It expects Clojure vect
 #### Green, Refactor, Green
 Ok before we fix some problems lets add some passing tests. I know right, well better late than never, and especially as a scaffold for our upcoming changes. Open `test/chatter/handler_test.clj` file and then replace the contents with:
 
-```
+```clojure
 (ns chatter.handler-test
   (:use [kerodon.core]
         [kerodon.test]
@@ -109,6 +109,15 @@ A problem with our new `app-routes` is that it has two different functions right
 `index-view` is a function that takes no arguments (for now!). It calls a hiccup function `page/html5` to generate html from a vector representing the `head` sections and a vector representing the `body` elements of the html.
 
 Save `handler.clj`, and refresh the browser to make sure our page still works. From the outside, we shouldn't see a change. The page should still display "Our Chat App" and the html should be identical.
+
+Run the tests,
+
+```
+  $: lein test
+```
+
+Confirm that all three assertions have passed and that there are no failures or errors, pat yourself on the bat.
+
 
 ### Adding Messages
 
