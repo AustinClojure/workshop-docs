@@ -19,6 +19,12 @@ In the terminal, move into the project "Chatter" directory by entering,
   $: cd chatter
 ```
 
+Run the test,
+
+```
+  $: lein test
+```
+
 Start the server with this command
 
 ```
