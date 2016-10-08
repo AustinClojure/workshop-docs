@@ -19,7 +19,7 @@ In the terminal, move into the project "Chatter" directory by entering,
   $: cd chatter
 ```
 
-Run the test,
+Run generated compojure project tests,
 
 ```
   $: lein test
