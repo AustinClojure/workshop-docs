@@ -43,8 +43,8 @@ Add a new file called `main.clj` in the `src/chatter` directory. Add this follow
            [ring.adapter.jetty :as jetty]))
 
 (defn -main []
- (let [jetty-opts {:port (or (Integer. (env/env :port))
-                             3000)
+ (let [jetty-opts {:port
+                   (Integer. (or (env/env :port) "3000"))
                    :join? false}]
    (jetty/run-jetty #'chatter/app jetty-opts)))
 ```
