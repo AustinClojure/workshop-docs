@@ -15,7 +15,7 @@ Change the `project.clj` to be like this:
                  [hickory "0.5.4"]                 
                  [environ "1.0.0"]]
   :plugins [[lein-ring "0.9.7"]            
-            [http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.htmllein-environ "1.0.0"]]
+            [lein-environ "1.0.0"]]
   :ring {:handler chatter.handler/app}
   :profiles {
      :dev {:dependencies [[javax.servlet/servlet-api "2.5"]                               
