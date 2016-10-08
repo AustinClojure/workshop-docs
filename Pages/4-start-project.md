@@ -19,6 +19,12 @@ In the terminal, move into the project "Chatter" directory by entering,
   $: cd chatter
 ```
 
+Run generated compojure project tests,
+
+```
+  $: lein test
+```
+
 Start the server with this command
 
 ```

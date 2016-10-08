@@ -19,7 +19,9 @@ Change the `project.clj` to be like this:
   :ring {:handler chatter.handler/app}
   :profiles {
      :dev {:dependencies [[javax.servlet/servlet-api "2.5"]                               
-                          [ring/ring-mock "0.3.0"]]}
+                          [ring/ring-mock "0.3.0"]
+                          [kerodon "0.8.0"]]}
+
                              
      :production {:ring {:open-browser? false
                          :stacktraces? false
