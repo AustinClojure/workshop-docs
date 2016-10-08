@@ -152,3 +152,5 @@ Now, the app is taking our new messages, but it's adding new messages to the end
 
 > Like vectors, lists are sequential collections.  Vectors are better for accessing random elements fast (which we aren't doing). Lists are better at adding an element to the front, which we want to do. Since they are both collections, `conj` works with either.
 
+
+Now, deploy your app to [heroku](/Pages/10-publish-github.md)
