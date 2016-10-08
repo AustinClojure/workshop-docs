@@ -6,7 +6,12 @@ If you want to use command line:
 
 Start the REPL by typing `lein repl`. You are automatically placed into the user namespace.
 
-Using the `hello-world` function from the previous chapter in the REPL would look like this: 
+ Consider the `hello-world` function:
+ 
+ ```clojure
+ (defn hello-world []
+   "hello world")
+ ```
 
 `hello-world` takes no arguments and returns the string "Hello, World".
 
