@@ -18,15 +18,14 @@ Change the `project.clj` to be like this:
             [lein-environ "1.0.0"]]
   :ring {:handler chatter.handler/app}
   :profiles {
-     :dev {:dependencies [[javax.servlet/servlet-api "2.5"]                               
-                          [ring/ring-mock "0.3.0"]
-                          [kerodon "0.8.0"]]}
+             :dev {:dependencies [[javax.servlet/servlet-api "2.5"]                               
+                                  [ring/ring-mock "0.3.0"]
+                                  [kerodon "0.8.0"]]}
 
-                             
-     :production {:ring {:open-browser? false
-                         :stacktraces? false
-                         :auto-reload? false}}
-                  :env {production true}}
+             :production {:ring {:open-browser? false
+                                 :stacktraces? false
+                                 :auto-reload? false}
+                          :env {production true}}}
   :aot :all  
   :main chatter.main  
   :uberjar-name "chatter-standalone.jar")
