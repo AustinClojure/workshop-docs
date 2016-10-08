@@ -45,7 +45,7 @@ In the terminal you see the message, "Started server on port 3000". This means y
 
 Stop the server connection by hitting "Ctrl + C" in the command line.
 
-Let's take a closer look at what's in the chatter directory. In LightTable, it looks like this:
+Let's take a closer look at what's in the chatter directory. It looks like this:
 
 ```
 .
