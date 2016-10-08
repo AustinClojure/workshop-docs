@@ -1,4 +1,4 @@
-# Reorganization
+# Chapter 5: Reorganization
 
 We need to clean up a little bit to make the code better.
 
