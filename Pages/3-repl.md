@@ -1,4 +1,8 @@
-# REPL
+# REPL and Setup
+
+If you are using [NightCode](https://sekao.net/nightcode/) The REPL is the window in the bottom left corner.
+
+If you want to use command line: 
 
 Start the REPL by typing `lein repl`. You are automatically placed into the user namespace.
 

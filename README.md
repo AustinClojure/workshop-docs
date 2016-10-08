@@ -1,5 +1,9 @@
 Forked from [Minneapolis Clojurebridge Track 1](https://github.com/clojurebridge-minneapolis/track1-chatter) Project. We thank them for starting this and sharing it.
 
+Please have installed: 
+* [Java 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Nightcode](https://sekao.net/nightcode/) or other editor
+
 ### Table of Contents For The Workshop
 * [Chapter 1: Intro](Pages/1-intro.md)
 * [Chapter 2: Basics](Pages/2-basics.md)

@@ -3,7 +3,8 @@
 We see the form now, but submitting it does nothing. The problem now is that we're extracting the params during the `POST` but aren't actually doing anything with them.  To fix this, we have to extract the parameters from the form, build a message, and store the message in our
 messages vector.
 
-We want to be able to add new messages to our `messages` vector. Clojure was designed from the ground up to make it easier to write concurrent programs. Concurrent programs are programs that do more than one thing at a time. It does that by having data structures that do not change. Variables can be changed to point to something else, but Clojure requires that doing so happens using particular functions, so it can ensure the program stays in a safe state. We're going to use the `atom` mechanism to allow us to update our `messages`.
+We want to be able to add new messages to our `messages` vector. Clojure was designed from the ground up to make it easier to write concurrent programs. Concurrent programs are programs that do more than one thing at a time. It does that by having data structures that do not change. Variables can be changed to point to something else, but Clojure requires that doing so happens using particular functions, so it can ensur
+e the program stays in a safe state. We're going to use the `atom` mechanism to allow us to update our `messages`.
 
 
 > An `atom` is like a box that protects information from being changed in an unsafe way. You simply pass the information into the `atom`.
@@ -27,9 +28,9 @@ We'll use:
          {:name "Sally"  :message "Hungry for some pizza?"}]))
 ```
 
-Now `chat-messages` is pointing to the `atom` protecting our vector of hashes.
+Now `chat-messages` is pointing to the `atom` protecting our vector of hashes instead of just a vector.
 
-Because `chat-messages` is pointing to the `atom`, we can't simply `map` over it in `index-view`.  Now, we have to tell Clojure that we want to generate HTML for the contents of the atom. This allows Clojure to ensure the messages are always read in a consistent state, even though something could be modifying them.
+Because `chat-messages` is pointing to the `atom`, we can't simply `map` over it in `index-view`.  We have to dereference it first. We want to tell Clojure that we want to generate HTML for the contents of the atom. This allows Clojure to ensure the messages are always read in a consistent state, even though something could be modifying them.
 
 > Reading what's stored in an `atom` is called "dereferencing" and is represented by the `@` character.
 
@@ -42,7 +43,7 @@ We will dereference the `chat-messages` atom just before it is passed to the `in
   (route/not-found "Not Found"))
 ```
 
-to:
+to (adding @ in front of the var holding the atom):
 
 ```clojure
 (defroutes app-routes
@@ -54,6 +55,8 @@ to:
 If you save `handler.clj` and refresh the browser, the hard coded examples should display as before. We still won't see any new messages because we still need to extract the information from the form and modify `chat-messages`.
 
 To add messages to `chat-messages`, we will need to introduce two more functions: `conj` and `swap!`.
+
+#### Try this in the repl
 
 > #### conj
 > There are many ways to work with collections of values in Clojure.  One commonly used function is `conj`. The name is short for "conjoin". This function takes a collection and one or more item(s) to add to the collection. It then returns a _new_ collection without modifying the original collection.
@@ -98,7 +101,7 @@ To add messages to `chat-messages`, we will need to introduce two more functions
 In our case, we're going to "swap" the content of ```chat-messages``` by
 "`conj`ing" a new message onto the vector of messages.
 
-We'll also put it in a helper function to make it easier to make a new message and save it to our atom.
+We'll also make a helper function to make it easier to make a new message and save it to our atom.
 
 ```clojure
 (defn build-message [name message]
@@ -114,13 +117,13 @@ Now, we have to modify our `app-routes`. We have to make two changes; it needs t
 
 ```clojure
 (defn save-new-message
-  "Add the message as a map into our vector of messages in the atom"
+  "Add the message as a map into our vector of messages in the atom and redirects"
   [chat-messages name message]
   (save-message! chat-messages (build-message name message))
   (response/redirect "/"))
 ```
 
-The new `app-routes` looks like when we call `save-new-message`:
+The new `app-routes` looks like this when we call `save-new-message`:
 
 ```clojure
 (defroutes app-routes
