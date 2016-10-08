@@ -1,4 +1,4 @@
-# Chapter 5: Building the Index Page
+# Chapter 6: Building the Index Page
 
 Now let's change the app's main page from "Hello, World" to something a little more chatty.
 
