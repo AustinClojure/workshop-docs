@@ -15,7 +15,7 @@ Change the `project.clj` to be like this:
                  [hickory "0.5.4"]                 
                  [environ "1.0.0"]]
   :plugins [[lein-ring "0.9.7"]            
-            [lein-environ "1.0.0"]]
+            [http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.htmllein-environ "1.0.0"]]
   :ring {:handler chatter.handler/app}
   :profiles {
      :dev {:dependencies [[javax.servlet/servlet-api "2.5"]                               
@@ -37,7 +37,7 @@ Add a new file called `main.clj` in the `src/chatter` directory. Add this follow
 ```clojure
 (ns chatter.main  
  (:require [chatter.handler :as chatter]            
-           [environ.core :as env]            
+           [environ.core :as env]      
            [ring.adapter.jetty :as jetty]))
 
 (defn -main []
@@ -60,13 +60,19 @@ Then change your Handler file to be like this:
             [ring.util.response :as response]))
 ```
 
-Remove the var and replace with this:
+Remove the app var and replace with this:
 
 ```clojure
 (def app (params/wrap-params app-routes))
 ```
 
 We have now basically added all the libraries we will need and moved the server code to a new file.
+
+Try it out with 
+
+```lein 
+lein ring server
+```
 
 Next lets start [Chapter 6: Building our Index Page](/Pages/6-build-page.md)
 

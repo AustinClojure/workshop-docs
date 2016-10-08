@@ -35,13 +35,15 @@ Let's use hiccup to generate the html by changing `app-routes`:
   (route/not-found "Not Found"))
 ```
 
-Once the code is updated, let's try it out. In the command line, start the server:
+Once the code is updated, let's try it out. In the command line, exit and start the server (start it headless so it doesn't create a new browser tab):
 
-    $: lein ring server
+    $: lein ring server-headless
+
+Refresh your browser.
 
 Now `http://localhost:3000` displays "Our Chat App".  Right-click and select `View Page Source` to see  it's now proper HTML complete with `head`, `title`, and `body`.
 
-The hiccup function(*) `page/html5` generates an HTML page. It expects Clojure vectors with symbols representing corresponding HTML tags. Hiccup will automatically add the closing tag when it reaches the end of the vector.
+The hiccup function `page/html5` generates an HTML page. It expects Clojure vectors with symbols representing corresponding HTML tags. Hiccup will automatically add the closing tag when it reaches the end of the vector.
 
 
 #### How Does Hiccup Work?
@@ -54,7 +56,7 @@ The hiccup function(*) `page/html5` generates an HTML page. It expects Clojure v
 > Where HTML uses `<body>`, hiccup would expect `:body`. Where HTML uses `<title>`, hiccup uses
 > `:title`. Because the keywords are enclosed in a vector, the closing of the HTML tag is unnecessary.  The closing of the surrounding vector signals where the HTML section ends.
 
-A problem with our new `app-routes` is that it has two different functions right now. Its main role is to take the incoming request and decide what to do.  Right now it's doing that, but it is also generating a full HTML page. As we add more pages, this will become too complicated to manage. We'll get ahead of the game by splitting out the task of generating the HTML into a helper function.
+A problem with our new `app-routes` is that it has two different functions right now. Its main role is to take the incoming request and decide what to do.  Right now it's doing that, but it is also generating a full HTML page. As we add more pages, this will become too complicated to manage. We'll get ahead of the game by splitting out the task of generating the HTML into a helper function. Add a function `index-view` and call it in the `GET` function:
 
 ```clojure
 (defn index-view
@@ -73,9 +75,7 @@ A problem with our new `app-routes` is that it has two different functions right
 
 `index-view` is a function that takes no arguments (for now!). It calls a hiccup function `page/html5` to generate html from a vector representing the `head` sections and a vector representing the `body` elements of the html.
 
-Save `handler.clj`, and refresh the browser to make sure our page still works. From the outside, we shouldn't see a change. The page should still display "Our Chat App" and the html should be identical. Now, let's double check our git status:
-
-
+Save `handler.clj`, and refresh the browser to make sure our page still works. From the outside, we shouldn't see a change. The page should still display "Our Chat App" and the html should be identical.
 
 ### Adding Messages
 
@@ -110,9 +110,9 @@ Maps are everywhere in Clojure and are used for many things where other language
 
 Let's call the vector simply `chat-messages` and hard code some samples to get started. Add a chat-messages variable to `handler.clj`.
 
-After the ns expression, add:
+Before your `index-view` function add:
 
-```clojure
+```Clojure
 (def chat-messages [{:name "Bob"    :message "hello, world"}
                     {:name "George" :message "What's up internet"}
                     {:name "Sally"  :message "Hungry for some pizza?"}])
@@ -180,7 +180,7 @@ Let's take the messages and put them in a bootstrap components.
    [:div.panel-body (hiccup/h (:message message))]])
 ```
 
-Now our `index-view` looks like:
+Now our `index-view` looks like:   (we added boostrap css and called map around the list of messages).t
 
 ```clojure
 (defn index-view
@@ -189,13 +189,12 @@ Now our `index-view` looks like:
   (page/html5
    [:head
     [:title "chatter"]
-    (page/include-css "/css/bootstrap.min.css")]
+    (page/include-css "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")]
    [:body
     [:div.container
      [:h1 "Our Chat App"]
      [:div.row (map message-view messages)]]]))
 ```
-
 
 Save `handler.clj`, then refresh the browser.  Our hard-coded messages should now display in the page
 

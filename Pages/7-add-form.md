@@ -24,11 +24,8 @@ First the form, using bootstrap components and styles:
      [:input.btn.btn-primary {:type "submit" :value "Save"}]]]])
 ```
 
-Now Change the app var to include the `params/wrap-params` function to be able to access the form values in the next step.
 
-```clojure
-(def app (params/wrap-params app-routes))
-```
+Call the form in your `index-view` function just after the `[:h1 "Our Chat App"]`
 
 Next we will wire it up and make it actually work.
 
