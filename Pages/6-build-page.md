@@ -116,7 +116,7 @@ Run the tests,
   $: lein test
 ```
 
-Confirm that all three assertions have passed and that there are no failures or errors, pat yourself on the bat.
+Confirm that all three assertions have passed and that there are no failures or errors, pat yourself on the back.
 
 
 ### Adding Messages
