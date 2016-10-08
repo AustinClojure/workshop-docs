@@ -56,6 +56,39 @@ The hiccup function `page/html5` generates an HTML page. It expects Clojure vect
 > Where HTML uses `<body>`, hiccup would expect `:body`. Where HTML uses `<title>`, hiccup uses
 > `:title`. Because the keywords are enclosed in a vector, the closing of the HTML tag is unnecessary.  The closing of the surrounding vector signals where the HTML section ends.
 
+#### Green, Refactor, Green
+Ok before we fix some problems lets add some passing tests. I know right, well better late than never, and especially as a scaffold for our upcoming changes. Open `test/chatter/handler_test.clj` file and then replace the contents with:
+
+```
+(ns chatter.handler-test
+  (:use [kerodon.core]
+        [kerodon.test]
+        [clojure.test])
+  (:require [chatter.handler :refer [app]]))
+
+(deftest test-app
+  (testing "main route"
+    (-> (session app)
+        (visit "/")
+		(has (status? 200) "page is found")
+		(has (some-text? "Our Chat App"))))
+
+  (testing "not-found route"
+    (-> (session app)
+        (visit "/invalid")
+		(has (status? 404) "page not found"))))
+```
+
+These are two interaction tests, two tests covering the projected generated scenarios, plus one additional to cover code we have already written.
+
+```
+  $: lein test
+```
+
+Confirm that all three assertions have passed and that there are no failures or errors, then continue on to the refactor.
+
+#### Refactor
+
 A problem with our new `app-routes` is that it has two different functions right now. Its main role is to take the incoming request and decide what to do.  Right now it's doing that, but it is also generating a full HTML page. As we add more pages, this will become too complicated to manage. We'll get ahead of the game by splitting out the task of generating the HTML into a helper function. Add a function `index-view` and call it in the `GET` function:
 
 ```clojure
