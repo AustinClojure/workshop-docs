@@ -9,7 +9,9 @@ Start the REPL by typing `lein repl`. You are automatically placed into the user
  Consider the `hello-world` function:
  
  ```clojure
- (defn hello-world []
+ (defn hello-world
+   "ye olde 'Hello, World'"
+   []
    "hello world")
  ```
 
