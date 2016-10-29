@@ -8,40 +8,15 @@ We're going to start by asking Leiningen to start a web application for us.
   $: lein new compojure chatter
 ```
 
-
-`lein` is a tool for managing Clojure projects.
-
-The command above requests permission to create a new compojure project called "Chatter". This command results in the creation of a directory`chatter` which appears as a folder in your computer's directory (Finder on Mac, Windows Explorer on Windows)
-
-In the terminal, move into the project "Chatter" directory by entering,
-
-```
-  $: cd chatter
-```
-
-Run generated compojure project tests,
-
-```
-  $: lein test
-```
+The command creates a new compojure project called "Chatter". This command results in the creation of a directory `chatter`.
 
 Start the server with this command
 
 ```
-  $: lein ring server
+  $: lein ring server-headless
 ```
 
-`lein` will download a bunch of stuff from the Internet the first time it runs. After this finishes, your default browser opens a page that says, "Hello World".
-
-Notice the address bar.
-
-* "localhost" is an alias for your computer.
-
-* 3000 is the port number where your server is listening for requests.
-
-In the web browser, right-click and select `View Page Source`. You see that it's not even an HTML document, it's just the _string_ "Hello World".
-
-In the terminal you see the message, "Started server on port 3000". This means your server is working and you will be able to view your app in the browser. We initiated this connection earlier when we entered `lein ring server` in the command line.
+`lein` will download a bunch of stuff from the Internet the first time it runs. After this finishes, open your browser to `http://localhost:3000`. It will display a message "Hello World".
 
 Stop the server connection by hitting "Ctrl + C" in the command line.
 
