@@ -8,7 +8,7 @@ We need to write code that will generate HTML. To do this, we will use a library
 
 1) Add the library to the dependency section of the `project.clj` file.
 
-Add hiccup by updating the `project.clj` dependancies vector to include this:
+Add hiccup by updating the `project.clj` dependencies vector to include this:
 
 ```clojure
 [hiccup "1.0.5"]
@@ -23,7 +23,6 @@ Add hiccup by updating the `project.clj` dependancies vector to include this:
 
 Let's use hiccup to generate the html by changing `app-routes`:
 
-
 ```clojure
 (defroutes app-routes
   (GET "/" []
@@ -35,9 +34,11 @@ Let's use hiccup to generate the html by changing `app-routes`:
   (route/not-found "Not Found"))
 ```
 
-Once the code is updated, let's try it out. In the command line, exit and start the server (start it headless so it doesn't create a new browser tab):
+Once the code is updated, let's try it out. 
 
-    $: lein ring server-headless
+```
+$: lein ring server-headless
+```
 
 Refresh your browser.
 
@@ -45,12 +46,10 @@ Now `http://localhost:3000` displays "Our Chat App".  Right-click and select `Vi
 
 The hiccup function `page/html5` generates an HTML page. It expects Clojure vectors with symbols representing corresponding HTML tags. Hiccup will automatically add the closing tag when it reaches the end of the vector.
 
-
 #### How Does Hiccup Work?
 
 >_Vectors_ are a Clojure data structure used to contain sequences of things, including other vectors. Vectors are written using square brackets or the `(vec)` function. For example, `[1 2 3]` or `(vec 1 2 3)` are vectors containing the numbers 1, 2, and 3. Hiccup uses vectors of keywords to represent sections of HTML.
 
->
 >_Keywords_ are names that begin with a colon.  `:title`, `:x`, and `:favorite-color` are all keywords. Clojure often uses keywords where other languages use strings. If you were to use Clojure to query a database, Clojure would probably use keywords to represent the column names.  Hiccup uses keywords to represent the names of HTML elements.  
 
 > Where HTML uses `<body>`, hiccup would expect `:body`. Where HTML uses `<title>`, hiccup uses
@@ -82,7 +81,7 @@ Ok before we fix some problems lets add some passing tests. I know right, well b
 These are two interaction tests, two tests covering the projected generated scenarios, plus one additional to cover code we have already written.
 
 ```
-  $: lein test
+$: lein test
 ```
 
 Confirm that all three assertions have passed and that there are no failures or errors, then continue on to the refactor.
@@ -106,18 +105,11 @@ A problem with our new `app-routes` is that it has two different functions right
   (route/not-found "Not Found"))
 ```
 
-`index-view` is a function that takes no arguments (for now!). It calls a hiccup function `page/html5` to generate html from a vector representing the `head` sections and a vector representing the `body` elements of the html.
+The function `index-view` takes no arguments (for now!). It calls a hiccup function `page/html5` to generate html from a vector representing the `head` sections and a vector representing the `body` elements of the html.
 
 Save `handler.clj`, and refresh the browser to make sure our page still works. From the outside, we shouldn't see a change. The page should still display "Our Chat App" and the html should be identical.
 
-Run the tests,
-
-```
-  $: lein test
-```
-
 Confirm that all three assertions have passed and that there are no failures or errors, pat yourself on the back.
-
 
 ### Adding Messages
 
@@ -127,7 +119,6 @@ Let's change the app so it displays messages. We'll represent the messages as a 
 
 ```clojure
 (def messages {:name "blue" :message "blue's first post"})
-
 ```
 
 This is a map with two keys named `messages`. 
@@ -141,6 +132,7 @@ To get a value from a map, pass the map and key into the `get` function. For exa
 ```clojure
 (get messages :name)
 ```
+
 When the keys are keywords, you can also use the keyword as a function that takes the map and returns the values.
 
 ```clojure
@@ -160,7 +152,7 @@ Before your `index-view` function add:
                     {:name "Sally"  :message "Hungry for some pizza?"}])
 ```
 
-Next, we'll modify the HTML to display the messages.  We will also add a parameter to the `index-view` function so that we can give it a messages we want displayed.
+Next, we'll modify the HTML to display the messages.  We will also add a parameter to the `index-view` function so that we can give it the messages we want displayed.
 
 ```clojure
 (defn index-view
@@ -183,8 +175,6 @@ Save `handler.clj` and refresh the browser.
 This blows up spectacularly.
 
 ![](https://github.com/clojurebridge-minneapolis/track1-chatter/blob/master/images/illegal-argument-exception.jpg "illegal-argument-exception")
-
-[]()
 
 This is a stack trace - it gives us an idea what the program was doing when it hit the problem. Ignore all the files that aren't ones you wrote for the project. In my case, the first file of interest is
 `handler.clj`, line 14, the `index-view` function.
