@@ -228,6 +228,6 @@ Now our `index-view` looks like:   (we added boostrap css and called map around 
      [:div.row (map message-view messages)]]]))
 ```
 
-Save `handler.clj`, then refresh the browser.  Our hard-coded messages should now display in the page
+Save `handler.clj`, then refresh the browser.  Our hard-coded messages should now display in the page.
 
 Next [Chapter 7: Add Form](/Pages/7-add-form.md)
