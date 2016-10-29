@@ -1,5 +1,23 @@
 # Chapter 2: Basics
 
+## Outline
+
+### Datatypes
+* List
+* Vector
+* Map
+* Set
+
+### Doing something
+* Using a function
+* Writing a function
+* Defining a var
+* Namespaces
+  
+
+
+## More Reading
+
 ### Dive, Dive!
 
 We are working under the assumption that the reader has some programming experience under their belt.  We presume such experience is with a mainstream imperative language.
