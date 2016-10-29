@@ -2,11 +2,9 @@
 
 If you are using [NightCode](https://sekao.net/nightcode/) The REPL is the window in the bottom left corner.
 
-If you want to use command line: 
+If you want to use command line: Start the REPL by typing `lein repl`. You are automatically placed into the user namespace.
 
-Start the REPL by typing `lein repl`. You are automatically placed into the user namespace.
-
- Consider the `hello-world` function:
+Consider this `hello-world` function:
  
  ```clojure
  (defn hello-world
@@ -32,16 +30,14 @@ user> hello-world
 You can see the docs and parameters for a function by calling `doc`.
 
 ```
-user> (clojure.repl/doc hello-world)
+user> (doc hello-world)
 -------------------------
 user/hello-world
 ([])
   ye olde 'Hello, World'
 ```
 
-You can do `(doc hello-world)` if you have the `clojure.repl` namespace already loaded.
-
-You can look up any function in Clojure! Here is a couple: 
+You can look up any function in Clojure! Here are a couple examples: 
 
 ```
 user> (doc clojure.string/join)
@@ -52,7 +48,7 @@ clojure.string/join
    separated by an optional separator.
    
    
-user=> (doc first)
+user> (doc first)
 -------------------------
 clojure.core/first
 ([coll])
