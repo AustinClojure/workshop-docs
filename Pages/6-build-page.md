@@ -212,7 +212,7 @@ Let's take the messages and put them in a bootstrap components.
    [:div.panel-body (hiccup/h (:message message))]])
 ```
 
-Now our `index-view` looks like:   (we added boostrap css and called map around the list of messages).t
+Now our `index-view` looks like:   (we added boostrap css and called map around the list of messages).
 
 ```clojure
 (defn index-view
