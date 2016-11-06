@@ -122,10 +122,10 @@ Let's change the app so it displays messages. We'll represent the messages as a 
 ```
 
 This is a map with two keys named `messages`. 
-<ol>
-<li>`:name` is "blue", because blue posted it.</li>
-<li>`:message` is the content of the post.</li>
-</ol>
+
+`:name` is "blue", because blue posted it.
+`:message` is the content of the post.
+
 
 To get a value from a map, pass the map and key into the `get` function. For example,
 
