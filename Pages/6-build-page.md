@@ -123,7 +123,7 @@ Let's change the app so it displays messages. We'll represent the messages as a 
 
 This is a map with two keys named `messages`. 
 
-`:name` is "blue", because blue posted it.
+`:name` is "blue", because blue posted it.<br/>
 `:message` is the content of the post.
 
 
